@@ -2,8 +2,8 @@ name: Deploying web app on s3 using git action
 on: push
 jobs:
   s3-deploy:
-  runs-on: ubuntu-latest
-  steps:
+   runs-on: ubuntu-latest
+   steps:
     - name : code checkout
       uses : actions/checkout@v4
 
