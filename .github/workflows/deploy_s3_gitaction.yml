@@ -15,4 +15,4 @@ jobs:
           aws-secret-access-key : ${{ secrets.SECRET_KEY }}
 
     - name : Uploading the file to S3
-      run : aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} --delete
+      run : aws s3 cp index.html s3://${{ secrets.S3_BUCKET_NAME }}/index.html --delete
