@@ -1,0 +1,19 @@
+name: Deploying web app on s3 using git action
+
+on: push
+
+jobs:
+  runs-on: ubintu-latest
+  steps:
+    - name : code checkout
+      uses : actions/checkout@v4
+
+    - name : configure aws
+      uses : aws-actions/configure-aws-credentials@v6
+      with: 
+          aws-region : ${{ secrets.AWS_REGION }}
+          aws-access-key-id : ${{ secrets.ACCESS_KEY }}
+          aws-secret-access-key : ${{ secrets.SECRET_KEY }}
+
+    - name : Uploading the file to S3
+      run : aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} --delete
